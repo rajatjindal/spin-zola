@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #0E092D;
+}
+
+.home {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #E7D3F2;
+    font-size: 1.25rem;
+
+    h1 {
+        color: #A87CE6;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    a {
+        color: #E7D3F2;
+        text-decoration: underline;
+
+        &:hover {
+            color: #A87CE6;
+        }
+    }
+}
+
+.blog {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        color: #A87CE6;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    ul {
+        width: 80%;
+
+        li {
+            position: relative;
+
+            a {
+                display: block;
+                font-size: 1.5rem;
+                color: #E7D3F2;
+                text-decoration: none;
+
+                &:hover {
+                    color: #A87CE6;
+                }
+
+                margin-bottom: 0.5rem;
+            }
+
+            span {
+                color: lightgray;
+            }
+
+            margin-bottom: 1rem;
+            list-style: none;
+            padding-bottom: 2rem;
+
+            &:after {
+                content: "";
+                width: 80%;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                border-bottom: 1px solid darken(#E7D3F2, 5%);
+                opacity: 0.5;
+            }
+        }
+
+    }
+}
+
+.blog-post {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        color: #A87CE6;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .subtitle {
+        color: lightgray;
+        margin-bottom: 2rem;
+    }
+
+    .page-content {
+        width: 100%;
+        padding: 3rem;
+        font-size: 1.25rem;
+        color: #E7D3F2;
+        line-height: 1.25rem;
+
+        p {
+            margin-bottom: 1rem;
+        }
+    }
+}
