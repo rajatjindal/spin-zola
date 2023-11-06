@@ -1,0 +1,52 @@
+name: Release Artifacts for Spin Zola
+  workflow_dispatch:
+    inputs:
+      tag:
+        type: string
+        description: 'new tag for this push'
+        required: true
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  echo-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Inputs
+        run: |
+          echo tag: ${{ github.event.inputs.tag }}
+
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 19
+
+      - name: setup spin
+        uses: fermyon/actions/spin/setup@v1
+        with:
+          version: v2.0.0
+          plugins: js2wasm
+          github_token: ${{ github.token }}
+
+      - name: Create app from template
+        run: |
+          spin templates install --dir templates/spin-zola --accept-defaults
+          spin new spin-zola-ssg -t spin-zola
+
+      - name: npm install
+        run: npm install --prefix spin-zola-ssg
+
+      - name: build and push
+        uses: fermyon/actions/spin/push@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          registry_username: ${{ github.actor }}
+          registry_password: ${{ secrets.GITHUB_TOKEN }}
+          registry_reference: "${{ env.REGISTRY }}/fermyon/spin-zola:${{ github.event.inputs.tag }}"
+          manifest_file: spin-zola-ssg/spin.toml
+
