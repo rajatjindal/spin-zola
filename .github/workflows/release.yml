@@ -36,8 +36,8 @@ jobs:
 
       - name: Create app from template
         run: |
-          spin templates install --dir templates/spin-zola --accept-defaults
-          spin new spin-zola-ssg -t spin-zola
+          spin templates install --dir templates/spin-zola
+          spin new spin-zola-ssg -t spin-zola --accept-defaults
 
       - name: npm install
         run: npm install --prefix spin-zola-ssg
