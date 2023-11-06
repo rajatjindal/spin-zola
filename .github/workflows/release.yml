@@ -33,7 +33,6 @@ jobs:
         uses: fermyon/actions/spin/setup@v1
         with:
           version: v2.0.0
-          plugins: js2wasm
           github_token: ${{ github.token }}
 
       - name: Create app from template
@@ -49,4 +48,3 @@ jobs:
           registry_password: ${{ secrets.GITHUB_TOKEN }}
           registry_reference: "${{ env.REGISTRY }}/fermyon/spin-zola:${{ github.event.inputs.tag }}"
           manifest_file: spin-zola-ssg/spin.toml
-
