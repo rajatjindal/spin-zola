@@ -1,4 +1,5 @@
 name: Release Artifacts for Spin Zola
+on:
   workflow_dispatch:
     inputs:
       tag:
